@@ -21,15 +21,20 @@
     
     input.answer-input(
       v-model="userAnswer"
-      @keyup.enter="checkAnswer"
+      @keyup.enter="!isProcessingAnswer && checkAnswer()"
       @input="resetInputState"
       :class="inputState"
+      :disabled="isProcessingAnswer"
       placeholder="Enter letter name (Alpha, άλφα, etc.)"
       ref="answerInput"
     )
     
     div
-      button.btn.secondary(@click="checkAnswer" :disabled="!userAnswer.trim()") Submit
+      button.btn.secondary(
+        @click="checkAnswer" 
+        :disabled="!userAnswer.trim() || isProcessingAnswer"
+        :class="{ processing: isProcessingAnswer }"
+      ) {{ isProcessingAnswer ? (inputState === 'correct' ? 'Next...' : 'Game Over...') : 'Submit' }}
     
   .card.game-over.fade-in(v-if="gameComplete && completedSuccessfully")
     h2 Congratulations! 🎉
@@ -93,6 +98,7 @@ const inputState = ref('')
 const answerInput = ref(null)
 const isNewHighScore = ref(false)
 const correctAnswerText = ref('')
+const isProcessingAnswer = ref(false)
 
 // Randomized letters for current game
 const shuffledLetters = ref([])
@@ -151,6 +157,7 @@ const startGame = () => {
   currentScore.value = 0
   currentIndex.value = 0
   isNewHighScore.value = false
+  isProcessingAnswer.value = false
   
   // Generate and shuffle all letters (both uppercase and lowercase)
   const gameLetters = generateGameLetters()
@@ -165,7 +172,10 @@ const startGame = () => {
 }
 
 const checkAnswer = () => {
-  if (!userAnswer.value.trim()) return
+  if (!userAnswer.value.trim() || isProcessingAnswer.value) return
+  
+  // Set processing state immediately
+  isProcessingAnswer.value = true
   
   const answer = userAnswer.value.toLowerCase().trim()
   const letter = currentLetter.value
@@ -180,21 +190,22 @@ const checkAnswer = () => {
   ]
   
   if (correctAnswers.includes(answer)) {
-    // Correct answer
+    // Correct answer - show green immediately
     currentScore.value++
     inputState.value = 'correct'
     
     setTimeout(() => {
+      isProcessingAnswer.value = false
       nextLetter()
     }, 1000)
   } else {
-    // Wrong answer - game over
+    // Wrong answer - show red immediately
     // Store the correct answer before ending the game
-    const letter = currentLetter.value
     correctAnswerText.value = letter.name.charAt(0).toUpperCase() + letter.name.slice(1)
-    
     inputState.value = 'incorrect'
+    
     setTimeout(() => {
+      isProcessingAnswer.value = false
       endGame()
     }, 1500)
   }
@@ -235,6 +246,7 @@ const restartGame = () => {
   userAnswer.value = ''
   inputState.value = ''
   correctAnswerText.value = ''
+  isProcessingAnswer.value = false
   
   // Start a new game immediately
   startGame()

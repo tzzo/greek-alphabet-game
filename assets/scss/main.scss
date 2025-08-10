@@ -92,6 +92,7 @@ body {
     font-size: 1.1rem;
   }
 }
+// Input styles
 .answer-input {
   width: 100%;
   padding: 15px;
@@ -100,6 +101,7 @@ body {
   border-radius: 8px;
   margin: 20px 0;
   text-align: center;
+  transition: all 0.3s ease;
   
   &:focus {
     outline: none;
@@ -109,12 +111,21 @@ body {
   
   &.correct {
     border-color: $success-color;
-    background-color: rgba($success-color, 0.1);
+    background-color: rgba($success-color, 0.15);
+    box-shadow: 0 0 12px rgba($success-color, 0.3);
+    transform: scale(1.02);
   }
   
   &.incorrect {
     border-color: $error-color;
-    background-color: rgba($error-color, 0.1);
+    background-color: rgba($error-color, 0.15);
+    box-shadow: 0 0 12px rgba($error-color, 0.3);
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  &:disabled {
+    opacity: 0.8;
+    cursor: wait;
   }
 }
 
@@ -154,6 +165,17 @@ body {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
+  }
+  
+  &.processing {
+    background-color: #95a5a6;
+    cursor: wait;
+    
+    &:hover {
+      background-color: #95a5a6;
+      transform: none;
+      box-shadow: none;
+    }
   }
 }
 
