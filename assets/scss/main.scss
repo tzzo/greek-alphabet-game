@@ -1,0 +1,318 @@
+// Main SCSS file for Greek Alphabet Learning Game
+@use 'sass:color';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&family=Crimson+Text:wght@400;700&family=EB+Garamond:wght@400;700&display=swap');
+
+// Variables
+$primary-color: #2c3e50;
+$secondary-color: #3498db;
+$success-color: #27ae60;
+$error-color: #e74c3c;
+$background-color: #ecf0f1;
+$text-color: #2c3e50;
+$card-background: #ffffff;
+$shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+// Base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+// Main container
+.game-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Card styles
+.card {
+  background: $card-background;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: $shadow;
+  margin: 20px 0;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+// Greek letter display
+.greek-letter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    flex-direction: column;
+  }
+}
+
+.greek-letter {
+  font-size: 8rem;
+  font-weight: bold;
+  color: $primary-color;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  &.readable {
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  }
+  
+  &.stylized {
+    font-family: 'EB Garamond', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    color: color.adjust($primary-color, $lightness: -15%);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 6rem;
+  }
+}
+
+// Letter case indicator
+.letter-info {
+  margin: 10px 0;
+  
+  .case-indicator {
+    color: #666;
+    font-style: italic;
+    font-size: 1.1rem;
+  }
+}
+.answer-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+  
+  &:focus {
+    outline: none;
+    border-color: $secondary-color;
+    box-shadow: 0 0 8px rgba($secondary-color, 0.3);
+  }
+  
+  &.correct {
+    border-color: $success-color;
+    background-color: rgba($success-color, 0.1);
+  }
+  
+  &.incorrect {
+    border-color: $error-color;
+    background-color: rgba($error-color, 0.1);
+  }
+}
+
+// Button styles
+.btn {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px;
+  
+  &.primary {
+    background-color: $primary-color;
+    color: white;
+    
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+    }
+  }
+  
+  &.secondary {
+    background-color: $secondary-color;
+    color: white;
+    
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba($secondary-color, 0.3);
+    }
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Score display
+.score-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+  
+  .score-item {
+    text-align: center;
+    
+    .label {
+      font-size: 0.9rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: $primary-color;
+    }
+  }
+}
+
+// Progress bar
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+  
+  .progress-bar {
+    height: 10px;
+    background-color: $success-color;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+  }
+}
+
+// Game over screen
+.game-over {
+  text-align: center;
+  
+  h2 {
+    color: $success-color;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+  }
+  
+  .final-score {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: $primary-color;
+  }
+}
+
+// Game failed screen
+.game-failed {
+  text-align: center;
+  
+  h2 {
+    color: $error-color;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+  }
+  
+  .failure-message {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  .correct-answer {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: $success-color;
+    margin: 15px 0 25px 0;
+    padding: 15px;
+    background-color: rgba($success-color, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid $success-color;
+    
+    .greek-name {
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: $primary-color;
+      font-style: italic;
+      margin-top: 8px;
+    }
+  }
+  
+  .final-score {
+    font-size: 1.3rem;
+    margin: 15px 0;
+    color: $primary-color;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .game-container {
+    padding: 10px;
+  }
+  
+  .card {
+    padding: 20px;
+    margin: 10px 0;
+  }
+  
+  .score-display {
+    flex-direction: column;
+    gap: 10px;
+    
+    .score-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      
+      .value {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
