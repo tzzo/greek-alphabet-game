@@ -27,6 +27,12 @@
       :disabled="isProcessingAnswer"
       placeholder="Enter letter name (Alpha, άλφα, etc.)"
       ref="answerInput"
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+      name="guess-input"
+      :autofill="'off'"
     )
     
     div
