@@ -26,16 +26,21 @@
       v-model="userAnswer"
       @keyup.enter="!isProcessingAnswer && checkAnswer()"
       @input="resetInputState"
+      @focus="handleInputFocus"
       :class="inputState"
       :disabled="isProcessingAnswer"
       placeholder="Enter letter name (Alpha, άλφα, etc.)"
       ref="answerInput"
       autocomplete="off"
       autocorrect="off"
-      autocapitalize="off"
       spellcheck="false"
-      name="guess-input"
-      :autofill="'off'"
+      inputmode="text"
+      data-form-type="other"
+      data-lpignore="true"
+      data-1p-ignore="true"
+      readonly
+      @touchstart="enableInput"
+      @click="enableInput"
     )
     
     div
@@ -205,9 +210,10 @@ const startGame = (): void => {
   const gameLetters = generateGameLetters()
   shuffledLetters.value = [...gameLetters].sort(() => Math.random() - 0.5)
   
-  // Focus on input
+  // Focus on input with iOS Safari handling
   nextTick(() => {
     if (answerInput.value) {
+      answerInput.value.removeAttribute('readonly')
       answerInput.value.focus()
     }
   })
@@ -263,13 +269,21 @@ const nextLetter = (): void => {
     userAnswer.value = ''
     inputState.value = ''
     
-    // Ensure focus is maintained immediately and after DOM updates
+    // iOS Safari specific focus handling
     if (answerInput.value) {
-      answerInput.value.focus()
+      answerInput.value.removeAttribute('readonly')
     }
+    
+    // Ensure focus is maintained immediately and after DOM updates
     nextTick(() => {
       if (answerInput.value) {
         answerInput.value.focus()
+        // Double-check focus on iOS Safari
+        setTimeout(() => {
+          if (answerInput.value && document.activeElement !== answerInput.value) {
+            answerInput.value.focus()
+          }
+        }, 100)
       }
     })
   }
@@ -313,6 +327,29 @@ const resetInputState = (): void => {
         answerInput.value.focus()
       }
     })
+  }
+}
+
+// iOS Safari specific functions
+const handleInputFocus = (): void => {
+  // Remove readonly to allow input while preventing initial autofill
+  if (answerInput.value) {
+    answerInput.value.removeAttribute('readonly')
+  }
+}
+
+const enableInput = (): void => {
+  // Make input writable on touch/click to prevent iOS Safari readonly issues
+  if (answerInput.value) {
+    answerInput.value.removeAttribute('readonly')
+    // Focus after a brief delay to ensure proper keyboard behavior
+    if (document.activeElement !== answerInput.value) {
+      setTimeout(() => {
+        if (answerInput.value) {
+          answerInput.value.focus()
+        }
+      }, 50)
+    }
   }
 }
 
