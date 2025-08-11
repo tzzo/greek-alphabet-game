@@ -1,5 +1,8 @@
 <template lang="pug">
 .game-container
+  .dark-mode-toggle(@click="toggleDarkMode")
+    .icon {{ isDarkMode ? '☀️' : '🌙' }}
+  
   .card.fade-in(v-if="gameStarted && !gameComplete")
     .score-display
       .score-item
@@ -61,9 +64,21 @@
     button.btn.primary(@click="restartGame") Try Again
 </template>
 
-<script setup>
+<script setup lang="ts">
+// Types
+interface GreekLetter {
+  name: string
+  alternatives: string[]
+  greek: string
+}
+
+interface GameLetter extends GreekLetter {
+  symbol: string
+  case: 'upper' | 'lower'
+}
+
 // Greek alphabet data with both cases
-const greekLettersBase = [
+const greekLettersBase: GreekLetter[] = [
   { name: 'alpha', alternatives: ['alfa'], greek: 'άλφα' },
   { name: 'beta', alternatives: ['vita'], greek: 'βήτα' },
   { name: 'gamma', alternatives: [], greek: 'γάμμα' },
@@ -90,55 +105,75 @@ const greekLettersBase = [
   { name: 'omega', alternatives: [], greek: 'ωμέγα' }
 ]
 
-const uppercaseSymbols = ['Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω']
-const lowercaseSymbols = ['α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ', 'λ', 'μ', 'ν', 'ξ', 'ο', 'π', 'ρ', 'σ', 'τ', 'υ', 'φ', 'χ', 'ψ', 'ω']
+const uppercaseSymbols: string[] = ['Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω']
+const lowercaseSymbols: string[] = ['α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ', 'λ', 'μ', 'ν', 'ξ', 'ο', 'π', 'ρ', 'σ', 'τ', 'υ', 'φ', 'χ', 'ψ', 'ω']
 
 // Game state
-const gameStarted = ref(true)  // Auto-start the game
-const gameComplete = ref(false)
-const completedSuccessfully = ref(false)
-const currentScore = ref(0)
-const highScore = ref(0)
-const userAnswer = ref('')
-const inputState = ref('')
-const answerInput = ref(null)
-const isNewHighScore = ref(false)
-const correctAnswerText = ref('')
-const isProcessingAnswer = ref(false)
+const gameStarted = ref<boolean>(true)  // Auto-start the game
+const gameComplete = ref<boolean>(false)
+const completedSuccessfully = ref<boolean>(false)
+const currentScore = ref<number>(0)
+const highScore = ref<number>(0)
+const userAnswer = ref<string>('')
+const inputState = ref<string>('')
+const answerInput = ref<HTMLInputElement | null>(null)
+const isNewHighScore = ref<boolean>(false)
+const correctAnswerText = ref<string>('')
+const isProcessingAnswer = ref<boolean>(false)
+const isDarkMode = ref<boolean>(false)
 
+// Dark mode cookie
+const darkModeCookie = useCookie('greek-alphabet-dark-mode', {
+  default: () => false,
+  maxAge: 60 * 60 * 24 * 365 // 1 year
+})
 // Randomized letters for current game
-const shuffledLetters = ref([])
-const currentIndex = ref(0)
+const shuffledLetters = ref<GameLetter[]>([])
+const currentIndex = ref<number>(0)
 
 // Computed properties
-const currentLetter = computed(() => shuffledLetters.value[currentIndex.value] || { symbol: 'Α', name: 'alpha', case: 'upper', alternatives: [] })
-const totalLetters = computed(() => shuffledLetters.value.length)
-const progressPercentage = computed(() => (currentIndex.value / totalLetters.value) * 100)
+const currentLetter = computed((): GameLetter => 
+  shuffledLetters.value[currentIndex.value] || { 
+    symbol: 'Α', 
+    name: 'alpha', 
+    case: 'upper' as const, 
+    alternatives: [],
+    greek: 'άλφα'
+  }
+)
+const totalLetters = computed((): number => shuffledLetters.value.length)
+const progressPercentage = computed((): number => (currentIndex.value / totalLetters.value) * 100)
 
 // Generate letters with both uppercase and lowercase
-const generateGameLetters = () => {
-  const letters = []
+const generateGameLetters = (): GameLetter[] => {
+  const letters: GameLetter[] = []
   
   // Add all uppercase letters
   greekLettersBase.forEach((letter, index) => {
-    letters.push({
-      symbol: uppercaseSymbols[index],
-      name: letter.name,
-      alternatives: letter.alternatives,
-      greek: letter.greek,
-      case: 'upper'
-    })
+    const symbol = uppercaseSymbols[index]
+    if (symbol) {
+      letters.push({
+        symbol,
+        name: letter.name,
+        alternatives: letter.alternatives,
+        greek: letter.greek,
+        case: 'upper'
+      })
+    }
   })
   
   // Add all lowercase letters
   greekLettersBase.forEach((letter, index) => {
-    letters.push({
-      symbol: lowercaseSymbols[index],
-      name: letter.name,
-      alternatives: letter.alternatives,
-      greek: letter.greek,
-      case: 'lower'
-    })
+    const symbol = lowercaseSymbols[index]
+    if (symbol) {
+      letters.push({
+        symbol,
+        name: letter.name,
+        alternatives: letter.alternatives,
+        greek: letter.greek,
+        case: 'lower'
+      })
+    }
   })
   
   return letters
@@ -153,11 +188,12 @@ const highScoreCookie = useCookie('greek-alphabet-high-score', {
 // Initialize high score from cookie and start game
 onMounted(() => {
   highScore.value = highScoreCookie.value || 0
+  initDarkMode()
   startGame()
 })
 
 // Game functions
-const startGame = () => {
+const startGame = (): void => {
   gameStarted.value = true
   gameComplete.value = false
   currentScore.value = 0
@@ -177,7 +213,7 @@ const startGame = () => {
   })
 }
 
-const checkAnswer = () => {
+const checkAnswer = (): void => {
   if (!userAnswer.value.trim() || isProcessingAnswer.value) return
   
   // Set processing state immediately
@@ -217,7 +253,7 @@ const checkAnswer = () => {
   }
 }
 
-const nextLetter = () => {
+const nextLetter = (): void => {
   currentIndex.value++
   
   if (currentIndex.value >= totalLetters.value) {
@@ -226,6 +262,11 @@ const nextLetter = () => {
   } else {
     userAnswer.value = ''
     inputState.value = ''
+    
+    // Ensure focus is maintained immediately and after DOM updates
+    if (answerInput.value) {
+      answerInput.value.focus()
+    }
     nextTick(() => {
       if (answerInput.value) {
         answerInput.value.focus()
@@ -234,9 +275,14 @@ const nextLetter = () => {
   }
 }
 
-const endGame = (completed = false) => {
+const endGame = (completed: boolean = false): void => {
   gameComplete.value = true
   completedSuccessfully.value = completed
+  
+  // Remove focus from input when game ends
+  if (answerInput.value) {
+    answerInput.value.blur()
+  }
   
   // Check for high score
   if (currentScore.value > highScore.value) {
@@ -246,7 +292,7 @@ const endGame = (completed = false) => {
   }
 }
 
-const restartGame = () => {
+const restartGame = (): void => {
   gameComplete.value = false
   completedSuccessfully.value = false
   userAnswer.value = ''
@@ -258,9 +304,35 @@ const restartGame = () => {
   startGame()
 }
 
-const resetInputState = () => {
-  if (inputState.value) {
+const resetInputState = (): void => {
+  if (inputState.value && !isProcessingAnswer.value) {
     inputState.value = ''
+    // Ensure focus is maintained when resetting input state
+    nextTick(() => {
+      if (answerInput.value && document.activeElement !== answerInput.value) {
+        answerInput.value.focus()
+      }
+    })
+  }
+}
+
+// Dark mode functions
+const initDarkMode = (): void => {
+  if (import.meta.client) {
+    isDarkMode.value = darkModeCookie.value || false
+    updateTheme()
+  }
+}
+
+const toggleDarkMode = (): void => {
+  isDarkMode.value = !isDarkMode.value
+  darkModeCookie.value = isDarkMode.value
+  updateTheme()
+}
+
+const updateTheme = (): void => {
+  if (import.meta.client) {
+    document.documentElement.setAttribute('data-theme', isDarkMode.value ? 'dark' : 'light')
   }
 }
 </script>
