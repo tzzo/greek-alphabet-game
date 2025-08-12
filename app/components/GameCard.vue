@@ -13,7 +13,7 @@
   width: 100%;
   max-width: 500px;
   filter: backdrop-blur(10px);
-  padding: 8px;
+  padding: 16px;
   margin: 0 auto;
   
   @media (min-width: 550px) {

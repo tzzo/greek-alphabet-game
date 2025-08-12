@@ -4,9 +4,6 @@ GameCard(v-if="gameState === 'playing'")
     .score-item
       .label Progress
       .value {{ correctAnswers }}/7
-    .score-item
-      .label Lives
-      .value ❤️
   
   .progress-container
     .progress-bar(:style="`width: ${(correctAnswers / 7) * 100}%`")
@@ -161,10 +158,6 @@ onMounted(() => {
   gap: 1rem;
   max-width: 400px;
   margin: 0 auto;
-
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-  }
 }
 
 .option-button {
