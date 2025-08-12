@@ -1,0 +1,1162 @@
+[
+  {
+    "greek": "άνθρωπος",
+    "english": "person/man",
+    "gender": "masculine"
+  },
+  {
+    "greek": "γυναίκα",
+    "english": "woman",
+    "gender": "feminine"
+  },
+  {
+    "greek": "παιδί",
+    "english": "child",
+    "gender": "neutral"
+  },
+  {
+    "greek": "πατέρας",
+    "english": "father",
+    "gender": "masculine"
+  },
+  {
+    "greek": "μητέρα",
+    "english": "mother",
+    "gender": "feminine"
+  },
+  {
+    "greek": "αδελφός",
+    "english": "brother",
+    "gender": "masculine"
+  },
+  {
+    "greek": "αδελφή",
+    "english": "sister",
+    "gender": "feminine"
+  },
+  {
+    "greek": "φίλος",
+    "english": "friend",
+    "gender": "masculine"
+  },
+  {
+    "greek": "φίλη",
+    "english": "friend",
+    "gender": "feminine"
+  },
+  {
+    "greek": "οικογένεια",
+    "english": "family",
+    "gender": "feminine"
+  },
+  {
+    "greek": "σπίτι",
+    "english": "house",
+    "gender": "neutral"
+  },
+  {
+    "greek": "δωμάτιο",
+    "english": "room",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κουζίνα",
+    "english": "kitchen",
+    "gender": "feminine"
+  },
+  {
+    "greek": "μπάνιο",
+    "english": "bathroom",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κρεβάτι",
+    "english": "bed",
+    "gender": "neutral"
+  },
+  {
+    "greek": "τραπέζι",
+    "english": "table",
+    "gender": "neutral"
+  },
+  {
+    "greek": "καρέκλα",
+    "english": "chair",
+    "gender": "feminine"
+  },
+  {
+    "greek": "πόρτα",
+    "english": "door",
+    "gender": "feminine"
+  },
+  {
+    "greek": "παράθυρο",
+    "english": "window",
+    "gender": "neutral"
+  },
+  {
+    "greek": "τηλέφωνο",
+    "english": "telephone",
+    "gender": "neutral"
+  },
+  {
+    "greek": "βιβλίο",
+    "english": "book",
+    "gender": "neutral"
+  },
+  {
+    "greek": "εφημερίδα",
+    "english": "newspaper",
+    "gender": "feminine"
+  },
+  {
+    "greek": "περιοδικό",
+    "english": "magazine",
+    "gender": "neutral"
+  },
+  {
+    "greek": "τηλεόραση",
+    "english": "television",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ραδιόφωνο",
+    "english": "radio",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μουσική",
+    "english": "music",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ταινία",
+    "english": "film/movie",
+    "gender": "feminine"
+  },
+  {
+    "greek": "θέατρο",
+    "english": "theater",
+    "gender": "neutral"
+  },
+  {
+    "greek": "σινεμά",
+    "english": "cinema",
+    "gender": "neutral"
+  },
+  {
+    "greek": "εστιατόριο",
+    "english": "restaurant",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μαγαζί",
+    "english": "store/shop",
+    "gender": "neutral"
+  },
+  {
+    "greek": "σούπερ μάρκετ",
+    "english": "supermarket",
+    "gender": "neutral"
+  },
+  {
+    "greek": "φαρμακείο",
+    "english": "pharmacy",
+    "gender": "neutral"
+  },
+  {
+    "greek": "τράπεζα",
+    "english": "bank",
+    "gender": "feminine"
+  },
+  {
+    "greek": "νοσοκομείο",
+    "english": "hospital",
+    "gender": "neutral"
+  },
+  {
+    "greek": "σχολείο",
+    "english": "school",
+    "gender": "neutral"
+  },
+  {
+    "greek": "πανεπιστήμιο",
+    "english": "university",
+    "gender": "neutral"
+  },
+  {
+    "greek": "δουλειά",
+    "english": "work",
+    "gender": "feminine"
+  },
+  {
+    "greek": "γραφείο",
+    "english": "office",
+    "gender": "neutral"
+  },
+  {
+    "greek": "δάσκαλος",
+    "english": "teacher",
+    "gender": "masculine"
+  },
+  {
+    "greek": "δασκάλα",
+    "english": "teacher",
+    "gender": "feminine"
+  },
+  {
+    "greek": "γιατρός",
+    "english": "doctor",
+    "gender": "masculine"
+  },
+  {
+    "greek": "μαθητής",
+    "english": "student",
+    "gender": "masculine"
+  },
+  {
+    "greek": "μαθήτρια",
+    "english": "student",
+    "gender": "feminine"
+  },
+  {
+    "greek": "χρήματα",
+    "english": "money",
+    "gender": "neutral"
+  },
+  {
+    "greek": "ευρώ",
+    "english": "euro",
+    "gender": "neutral"
+  },
+  {
+    "greek": "δρόμος",
+    "english": "road/street",
+    "gender": "masculine"
+  },
+  {
+    "greek": "πόλη",
+    "english": "city",
+    "gender": "feminine"
+  },
+  {
+    "greek": "χωριό",
+    "english": "village",
+    "gender": "neutral"
+  },
+  {
+    "greek": "χώρα",
+    "english": "country",
+    "gender": "feminine"
+  },
+  {
+    "greek": "Ελλάδα",
+    "english": "Greece",
+    "gender": "feminine"
+  },
+  {
+    "greek": "Αθήνα",
+    "english": "Athens",
+    "gender": "feminine"
+  },
+  {
+    "greek": "λεωφορείο",
+    "english": "bus",
+    "gender": "neutral"
+  },
+  {
+    "greek": "αυτοκίνητο",
+    "english": "car",
+    "gender": "neutral"
+  },
+  {
+    "greek": "τρένο",
+    "english": "train",
+    "gender": "neutral"
+  },
+  {
+    "greek": "αεροπλάνο",
+    "english": "airplane",
+    "gender": "neutral"
+  },
+  {
+    "greek": "ταξί",
+    "english": "taxi",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μετρό",
+    "english": "metro",
+    "gender": "neutral"
+  },
+  {
+    "greek": "σταθμός",
+    "english": "station",
+    "gender": "masculine"
+  },
+  {
+    "greek": "αεροδρόμιο",
+    "english": "airport",
+    "gender": "neutral"
+  },
+  {
+    "greek": "ξενοδοχείο",
+    "english": "hotel",
+    "gender": "neutral"
+  },
+  {
+    "greek": "καφές",
+    "english": "coffee",
+    "gender": "masculine"
+  },
+  {
+    "greek": "τσάι",
+    "english": "tea",
+    "gender": "neutral"
+  },
+  {
+    "greek": "νερό",
+    "english": "water",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κρασί",
+    "english": "wine",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μπίρα",
+    "english": "beer",
+    "gender": "feminine"
+  },
+  {
+    "greek": "γάλα",
+    "english": "milk",
+    "gender": "neutral"
+  },
+  {
+    "greek": "ψωμί",
+    "english": "bread",
+    "gender": "neutral"
+  },
+  {
+    "greek": "τυρί",
+    "english": "cheese",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κρέας",
+    "english": "meat",
+    "gender": "neutral"
+  },
+  {
+    "greek": "ψάρι",
+    "english": "fish",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κοτόπουλο",
+    "english": "chicken",
+    "gender": "neutral"
+  },
+  {
+    "greek": "αυγό",
+    "english": "egg",
+    "gender": "neutral"
+  },
+  {
+    "greek": "φρούτο",
+    "english": "fruit",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μήλο",
+    "english": "apple",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μπανάνα",
+    "english": "banana",
+    "gender": "feminine"
+  },
+  {
+    "greek": "πορτοκάλι",
+    "english": "orange",
+    "gender": "neutral"
+  },
+  {
+    "greek": "λαχανικό",
+    "english": "vegetable",
+    "gender": "neutral"
+  },
+  {
+    "greek": "πατάτα",
+    "english": "potato",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ντομάτα",
+    "english": "tomato",
+    "gender": "feminine"
+  },
+  {
+    "greek": "σαλάτα",
+    "english": "salad",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ρύζι",
+    "english": "rice",
+    "gender": "neutral"
+  },
+  {
+    "greek": "ζυμαρικά",
+    "english": "pasta",
+    "gender": "neutral"
+  },
+  {
+    "greek": "φαγητό",
+    "english": "food",
+    "gender": "neutral"
+  },
+  {
+    "greek": "γεύμα",
+    "english": "meal",
+    "gender": "neutral"
+  },
+  {
+    "greek": "πρωινό",
+    "english": "breakfast",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μεσημεριανό",
+    "english": "lunch",
+    "gender": "neutral"
+  },
+  {
+    "greek": "βραδινό",
+    "english": "dinner",
+    "gender": "neutral"
+  },
+  {
+    "greek": "ώρα",
+    "english": "hour/time",
+    "gender": "feminine"
+  },
+  {
+    "greek": "χρόνος",
+    "english": "time/year",
+    "gender": "masculine"
+  },
+  {
+    "greek": "μέρα",
+    "english": "day",
+    "gender": "feminine"
+  },
+  {
+    "greek": "εβδομάδα",
+    "english": "week",
+    "gender": "feminine"
+  },
+  {
+    "greek": "μήνας",
+    "english": "month",
+    "gender": "masculine"
+  },
+  {
+    "greek": "έτος",
+    "english": "year",
+    "gender": "neutral"
+  },
+  {
+    "greek": "σήμερα",
+    "english": "today",
+    "gender": "adverb"
+  },
+  {
+    "greek": "χθες",
+    "english": "yesterday",
+    "gender": "adverb"
+  },
+  {
+    "greek": "αύριο",
+    "english": "tomorrow",
+    "gender": "adverb"
+  },
+  {
+    "greek": "πρωί",
+    "english": "morning",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μεσημέρι",
+    "english": "noon",
+    "gender": "neutral"
+  },
+  {
+    "greek": "απόγευμα",
+    "english": "afternoon",
+    "gender": "neutral"
+  },
+  {
+    "greek": "βράδυ",
+    "english": "evening",
+    "gender": "neutral"
+  },
+  {
+    "greek": "νύχτα",
+    "english": "night",
+    "gender": "feminine"
+  },
+  {
+    "greek": "Δευτέρα",
+    "english": "Monday",
+    "gender": "feminine"
+  },
+  {
+    "greek": "Τρίτη",
+    "english": "Tuesday",
+    "gender": "feminine"
+  },
+  {
+    "greek": "Τετάρτη",
+    "english": "Wednesday",
+    "gender": "feminine"
+  },
+  {
+    "greek": "Πέμπτη",
+    "english": "Thursday",
+    "gender": "feminine"
+  },
+  {
+    "greek": "Παρασκευή",
+    "english": "Friday",
+    "gender": "feminine"
+  },
+  {
+    "greek": "Σάββατο",
+    "english": "Saturday",
+    "gender": "neutral"
+  },
+  {
+    "greek": "Κυριακή",
+    "english": "Sunday",
+    "gender": "feminine"
+  },
+  {
+    "greek": "καιρός",
+    "english": "weather",
+    "gender": "masculine"
+  },
+  {
+    "greek": "ήλιος",
+    "english": "sun",
+    "gender": "masculine"
+  },
+  {
+    "greek": "φεγγάρι",
+    "english": "moon",
+    "gender": "neutral"
+  },
+  {
+    "greek": "αστέρι",
+    "english": "star",
+    "gender": "neutral"
+  },
+  {
+    "greek": "ουρανός",
+    "english": "sky",
+    "gender": "masculine"
+  },
+  {
+    "greek": "σύννεφο",
+    "english": "cloud",
+    "gender": "neutral"
+  },
+  {
+    "greek": "βροχή",
+    "english": "rain",
+    "gender": "feminine"
+  },
+  {
+    "greek": "χιόνι",
+    "english": "snow",
+    "gender": "neutral"
+  },
+  {
+    "greek": "άνεμος",
+    "english": "wind",
+    "gender": "masculine"
+  },
+  {
+    "greek": "ζέστη",
+    "english": "heat",
+    "gender": "feminine"
+  },
+  {
+    "greek": "κρύο",
+    "english": "cold",
+    "gender": "neutral"
+  },
+  {
+    "greek": "χρώμα",
+    "english": "color",
+    "gender": "neutral"
+  },
+  {
+    "greek": "αριθμός",
+    "english": "number",
+    "gender": "masculine"
+  },
+  {
+    "greek": "χιλιάδα",
+    "english": "thousand",
+    "gender": "feminine"
+  },
+  {
+    "greek": "σώμα",
+    "english": "body",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κεφάλι",
+    "english": "head",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μάτι",
+    "english": "eye",
+    "gender": "neutral"
+  },
+  {
+    "greek": "αυτί",
+    "english": "ear",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μύτη",
+    "english": "nose",
+    "gender": "feminine"
+  },
+  {
+    "greek": "στόμα",
+    "english": "mouth",
+    "gender": "neutral"
+  },
+  {
+    "greek": "χέρι",
+    "english": "hand",
+    "gender": "neutral"
+  },
+  {
+    "greek": "πόδι",
+    "english": "foot/leg",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μαλλιά",
+    "english": "hair",
+    "gender": "neutral"
+  },
+  {
+    "greek": "καρδιά",
+    "english": "heart",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ζώο",
+    "english": "animal",
+    "gender": "neutral"
+  },
+  {
+    "greek": "σκύλος",
+    "english": "dog",
+    "gender": "masculine"
+  },
+  {
+    "greek": "γάτα",
+    "english": "cat",
+    "gender": "feminine"
+  },
+  {
+    "greek": "πουλί",
+    "english": "bird",
+    "gender": "neutral"
+  },
+  {
+    "greek": "άλογο",
+    "english": "horse",
+    "gender": "neutral"
+  },
+  {
+    "greek": "αγελάδα",
+    "english": "cow",
+    "gender": "feminine"
+  },
+  {
+    "greek": "φυτό",
+    "english": "plant",
+    "gender": "neutral"
+  },
+  {
+    "greek": "δέντρο",
+    "english": "tree",
+    "gender": "neutral"
+  },
+  {
+    "greek": "λουλούδι",
+    "english": "flower",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κήπος",
+    "english": "garden",
+    "gender": "masculine"
+  },
+  {
+    "greek": "πάρκο",
+    "english": "park",
+    "gender": "neutral"
+  },
+  {
+    "greek": "θάλασσα",
+    "english": "sea",
+    "gender": "feminine"
+  },
+  {
+    "greek": "λίμνη",
+    "english": "lake",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ποτάμι",
+    "english": "river",
+    "gender": "neutral"
+  },
+  {
+    "greek": "βουνό",
+    "english": "mountain",
+    "gender": "neutral"
+  },
+  {
+    "greek": "παραλία",
+    "english": "beach",
+    "gender": "feminine"
+  },
+  {
+    "greek": "νησί",
+    "english": "island",
+    "gender": "neutral"
+  },
+  {
+    "greek": "δάσος",
+    "english": "forest",
+    "gender": "neutral"
+  },
+  {
+    "greek": "πέτρα",
+    "english": "stone",
+    "gender": "feminine"
+  },
+  {
+    "greek": "γη",
+    "english": "earth",
+    "gender": "feminine"
+  },
+  {
+    "greek": "φωτιά",
+    "english": "fire",
+    "gender": "feminine"
+  },
+  {
+    "greek": "αέρας",
+    "english": "air",
+    "gender": "masculine"
+  },
+  {
+    "greek": "γλώσσα",
+    "english": "language/tongue",
+    "gender": "feminine"
+  },
+  {
+    "greek": "λέξη",
+    "english": "word",
+    "gender": "feminine"
+  },
+  {
+    "greek": "φράση",
+    "english": "sentence",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ερώτηση",
+    "english": "question",
+    "gender": "feminine"
+  },
+  {
+    "greek": "απάντηση",
+    "english": "answer",
+    "gender": "feminine"
+  },
+  {
+    "greek": "όνομα",
+    "english": "name",
+    "gender": "neutral"
+  },
+  {
+    "greek": "διεύθυνση",
+    "english": "address",
+    "gender": "feminine"
+  },
+  {
+    "greek": "τηλέφωνο",
+    "english": "phone",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κινητό",
+    "english": "mobile phone",
+    "gender": "neutral"
+  },
+  {
+    "greek": "email",
+    "english": "email",
+    "gender": "neutral"
+  },
+  {
+    "greek": "internet",
+    "english": "internet",
+    "gender": "neutral"
+  },
+  {
+    "greek": "υπολογιστής",
+    "english": "computer",
+    "gender": "masculine"
+  },
+  {
+    "greek": "αγάπη",
+    "english": "love",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ευτυχία",
+    "english": "happiness",
+    "gender": "feminine"
+  },
+  {
+    "greek": "λύπη",
+    "english": "sadness",
+    "gender": "feminine"
+  },
+  {
+    "greek": "φόβος",
+    "english": "fear",
+    "gender": "masculine"
+  },
+  {
+    "greek": "θυμός",
+    "english": "anger",
+    "gender": "masculine"
+  },
+  {
+    "greek": "ελπίδα",
+    "english": "hope",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ειρήνη",
+    "english": "peace",
+    "gender": "feminine"
+  },
+  {
+    "greek": "πόλεμος",
+    "english": "war",
+    "gender": "masculine"
+  },
+  {
+    "greek": "υγεία",
+    "english": "health",
+    "gender": "feminine"
+  },
+  {
+    "greek": "αρρώστια",
+    "english": "illness",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ζωή",
+    "english": "life",
+    "gender": "feminine"
+  },
+  {
+    "greek": "θάνατος",
+    "english": "death",
+    "gender": "masculine"
+  },
+  {
+    "greek": "γέννηση",
+    "english": "birth",
+    "gender": "feminine"
+  },
+  {
+    "greek": "παιχνίδι",
+    "english": "game/toy",
+    "gender": "neutral"
+  },
+  {
+    "greek": "αθλητισμός",
+    "english": "sport",
+    "gender": "masculine"
+  },
+  {
+    "greek": "ποδόσφαιρο",
+    "english": "football/soccer",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μπάσκετ",
+    "english": "basketball",
+    "gender": "neutral"
+  },
+  {
+    "greek": "τένις",
+    "english": "tennis",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κολύμβηση",
+    "english": "swimming",
+    "gender": "feminine"
+  },
+  {
+    "greek": "εργασία",
+    "english": "work/job",
+    "gender": "feminine"
+  },
+  {
+    "greek": "επαγγελματίας",
+    "english": "professional",
+    "gender": "masculine"
+  },
+  {
+    "greek": "μηχανικός",
+    "english": "engineer",
+    "gender": "masculine"
+  },
+  {
+    "greek": "νοσηλευτής",
+    "english": "nurse",
+    "gender": "masculine"
+  },
+  {
+    "greek": "νοσηλεύτρια",
+    "english": "female nurse",
+    "gender": "feminine"
+  },
+  {
+    "greek": "αστυνομικός",
+    "english": "police officer",
+    "gender": "masculine"
+  },
+  {
+    "greek": "πυροσβέστης",
+    "english": "firefighter",
+    "gender": "masculine"
+  },
+  {
+    "greek": "ταξιδιώτης",
+    "english": "traveler",
+    "gender": "masculine"
+  },
+  {
+    "greek": "ταξίδι",
+    "english": "trip/travel",
+    "gender": "neutral"
+  },
+  {
+    "greek": "διακοπές",
+    "english": "vacation",
+    "gender": "feminine"
+  },
+  {
+    "greek": "συνάντηση",
+    "english": "meeting",
+    "gender": "feminine"
+  },
+  {
+    "greek": "συζήτηση",
+    "english": "discussion",
+    "gender": "feminine"
+  },
+  {
+    "greek": "πρόβλημα",
+    "english": "problem",
+    "gender": "neutral"
+  },
+  {
+    "greek": "λύση",
+    "english": "solution",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ιδέα",
+    "english": "idea",
+    "gender": "feminine"
+  },
+  {
+    "greek": "σκέψη",
+    "english": "thought",
+    "gender": "feminine"
+  },
+  {
+    "greek": "όνειρο",
+    "english": "dream",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μνήμη",
+    "english": "memory",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ιστορία",
+    "english": "story/history",
+    "gender": "feminine"
+  },
+  {
+    "greek": "μάθημα",
+    "english": "lesson",
+    "gender": "neutral"
+  },
+  {
+    "greek": "διαγώνισμα",
+    "english": "test/exam",
+    "gender": "neutral"
+  },
+  {
+    "greek": "βαθμός",
+    "english": "grade",
+    "gender": "masculine"
+  },
+  {
+    "greek": "επιτυχία",
+    "english": "success",
+    "gender": "feminine"
+  },
+  {
+    "greek": "αποτυχία",
+    "english": "failure",
+    "gender": "feminine"
+  },
+  {
+    "greek": "προσπάθεια",
+    "english": "effort",
+    "gender": "feminine"
+  },
+  {
+    "greek": "δυσκολία",
+    "english": "difficulty",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ευκολία",
+    "english": "ease",
+    "gender": "feminine"
+  },
+  {
+    "greek": "βοήθεια",
+    "english": "help",
+    "gender": "feminine"
+  },
+  {
+    "greek": "χαρά",
+    "english": "joy",
+    "gender": "feminine"
+  },
+  {
+    "greek": "λύπη",
+    "english": "sadness",
+    "gender": "feminine"
+  },
+  {
+    "greek": "φόβος",
+    "english": "fear",
+    "gender": "masculine"
+  },
+  {
+    "greek": "θυμός",
+    "english": "anger",
+    "gender": "masculine"
+  },
+  {
+    "greek": "ελπίδα",
+    "english": "hope",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ειρήνη",
+    "english": "peace",
+    "gender": "feminine"
+  },
+  {
+    "greek": "πόλεμος",
+    "english": "war",
+    "gender": "masculine"
+  },
+  {
+    "greek": "υγεία",
+    "english": "health",
+    "gender": "feminine"
+  },
+  {
+    "greek": "αρρώστια",
+    "english": "illness",
+    "gender": "feminine"
+  },
+  {
+    "greek": "ζωή",
+    "english": "life",
+    "gender": "feminine"
+  },
+  {
+    "greek": "θάνατος",
+    "english": "death",
+    "gender": "masculine"
+  },
+  {
+    "greek": "γέννηση",
+    "english": "birth",
+    "gender": "feminine"
+  },
+  {
+    "greek": "παιχνίδι",
+    "english": "game/toy",
+    "gender": "neutral"
+  },
+  {
+    "greek": "αθλητισμός",
+    "english": "sport",
+    "gender": "masculine"
+  },
+  {
+    "greek": "ποδόσφαιρο",
+    "english": "football/soccer",
+    "gender": "neutral"
+  },
+  {
+    "greek": "μπάσκετ",
+    "english": "basketball",
+    "gender": "neutral"
+  },
+  {
+    "greek": "τένις",
+    "english": "tennis",
+    "gender": "neutral"
+  },
+  {
+    "greek": "κολύμβηση",
+    "english": "swimming",
+    "gender": "feminine"
+  }
+]

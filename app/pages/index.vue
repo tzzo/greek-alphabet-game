@@ -45,6 +45,15 @@ const games = [
     route: '/weekdays',
     difficulty: 'beginner',
     duration: '5-10 min'
+  },
+  {
+    id: 'gender',
+    title: 'Word Gender',
+    description: 'Guess the grammatical gender of Greek nouns - Masculine, Feminine, or Neuter',
+    icon: '⚧️',
+    route: '/gender',
+    difficulty: 'intermediate',
+    duration: '10-15 min'
   }
   // Future games will be added here:
   // {
