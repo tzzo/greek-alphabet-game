@@ -1,5 +1,5 @@
 <template lang="pug">
-.card.fade-in(v-if="gameStarted && !gameComplete")
+GameCard(v-if="gameStarted && !gameComplete")
   .score-display
     .score-item
       .label Current Streak
@@ -11,14 +11,14 @@
   .progress-container
     .progress-bar(:style="{ width: progressPercentage + '%' }")
   
-  .greek-letter-container
+  .greek-content
     .greek-letter.readable {{ currentLetter.symbol }}
     .greek-letter.stylized {{ currentLetter.symbol }}
   
-  .letter-info
+  .game-info
     p.case-indicator {{ currentLetter.case === 'upper' ? 'Uppercase' : 'Lowercase' }}
   
-  input.answer-input(
+  input.game-input(
     v-model="userAnswer"
     @keyup.enter="!isProcessingAnswer && checkAnswer()"
     @input="resetInputState"
@@ -39,30 +39,38 @@
     @click="enableInput"
   )
   
-  div
+  .game-buttons
     button.btn.secondary(
       @click="checkAnswer" 
       :disabled="!userAnswer.trim() || isProcessingAnswer"
       :class="{ processing: isProcessingAnswer }"
     ) {{ isProcessingAnswer ? (inputState === 'correct' ? 'Next...' : 'Game Over...') : 'Submit' }}
 
-.card.game-over.fade-in(v-if="gameComplete && completedSuccessfully")
-  h2 Congratulations! 🎉
-  .final-score You completed all {{ totalLetters }} letters!
-  .final-score Final streak: {{ currentScore }}
-  .final-score(v-if="isNewHighScore") New High Score! 🏆
-  button.btn.primary(@click="restartGame") Play Again
+GameCard(v-if="gameComplete && completedSuccessfully")
+  .game-results
+    h2 Congratulations! 
+    .celebration 🎉
+    .final-stats
+      div You completed all {{ totalLetters }} letters!
+      div Final streak: 
+        span.stat-value {{ currentScore }}
+      div(v-if="isNewHighScore") New High Score! 🏆
+    button.btn.primary(@click="restartGame") Play Again
   
-.card.game-failed.fade-in(v-if="gameComplete && !completedSuccessfully")
-  h2 Game Over 😔
-  .failure-message Oops! You got it wrong.
-  .correct-answer 
-    div The correct answer was: {{ correctAnswerText }}
-    div.greek-name (Greek: {{ currentLetter.greek }})
-  .final-score Your streak: {{ currentScore }}
-  .final-score(v-if="isNewHighScore") New High Score! 🏆
-  .final-score(v-else-if="currentScore > 0") {{ currentScore === 1 ? 'Not bad for your first try!' : `You got ${currentScore} letters right!` }}
-  button.btn.primary(@click="restartGame") Try Again
+GameCard(v-if="gameComplete && !completedSuccessfully")
+  .game-results
+    h2 Game Over 
+    .celebration 😔
+    .failure-message Oops! You got it wrong.
+    .correct-answer 
+      div The correct answer was: {{ correctAnswerText }}
+      div.greek-name (Greek: {{ currentLetter.greek }})
+    .final-stats
+      div Your streak: 
+        span.stat-value {{ currentScore }}
+      div(v-if="isNewHighScore") New High Score! 🏆
+      div(v-else-if="currentScore > 0") {{ currentScore === 1 ? 'Not bad for your first try!' : `You got ${currentScore} letters right!` }}
+    button.btn.primary(@click="restartGame") Try Again
 </template>
 
 <script setup lang="ts">
@@ -344,299 +352,30 @@ const enableInput = (): void => {
 </script>
 
 <style lang="scss" scoped>
-// Card styles
-.card {
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
-  filter: backdrop-blur(10px);
-  padding: 8px;
-  
-  @media (min-width: 550px) {
-    padding: 30px;
-    margin: 20px 0;
-    background: var(--card-background);
-    box-shadow: var(--shadow);
-    border-radius: 12px;
-  }
+// Game-specific styles that aren't in the base GameCard component
+
+.failure-message {
+  font-size: 1.3rem;
+  color: var(--muted-text);
+  margin-bottom: 15px;
 }
 
-// Score display
-.score-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  
-  @media (min-width: 550px) {
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 20px 0;
-  }
-  
-  .score-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    
-    @media (min-width: 550px) {
-      display: block;
-      width: auto;
-    }
-    
-    .label {
-      font-size: 0.8rem;
-      color: var(--muted-text);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    .value {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--primary-color);
-      
-      @media (min-width: 550px) {
-        font-size: 2rem;
-      }
-    }
-  }
-}
-
-// Progress bar
-.progress-container {
-  width: 100%;
-  background-color: var(--progress-bg);
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 20px 0;
-  
-  .progress-bar {
-    height: 10px;
-    background-color: var(--success-color);
-    transition: width 0.3s ease;
-    border-radius: 10px;
-  }
-}
-
-// Greek letter display
-.greek-letter-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  user-select: none;
-  
-  @media (min-width: 550px) {
-    margin: 20px 0;
-  }
-}
-
-.greek-letter {
-  font-size: 5rem;
+.correct-answer {
+  font-size: 1.4rem;
   font-weight: bold;
-  color: var(--primary-color);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-  @media (min-width: 550px) {
-    font-size: 8rem;
-  }
-  
-  &.readable {
-    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  }
-  
-  &.stylized {
-    font-family: 'EB Garamond', 'Crimson Text', Georgia, serif;
-    font-style: italic;
-    color: var(--primary-color-dark);
-  }
-}
-
-// Letter case indicator
-.letter-info {
-  .case-indicator {
-    color: var(--muted-text);
-    font-style: italic;
-    font-size: 1.1rem;
-  }
-  
-  @media (min-width: 550px) {
-    margin: 10px 0;
-  }
-}
-
-// Input styles
-.answer-input {
-  width: 100%;
+  color: var(--success-color);
+  margin: 15px 0 25px 0;
   padding: 15px;
-  font-size: 1.2rem;
-  border: 2px solid var(--input-border);
+  background-color: rgba(39, 174, 96, 0.1);
   border-radius: 8px;
-  margin: 20px 0;
-  text-align: center;
-  transition: all 0.3s ease;
-  background-color: var(--card-background);
-  color: var(--text-color);
+  border-left: 4px solid var(--success-color);
   
-  &:focus {
-    outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
-  }
-  
-  &.correct {
-    border-color: var(--success-color);
-    background-color: rgba(39, 174, 96, 0.15);
-    box-shadow: 0 0 12px rgba(39, 174, 96, 0.3);
-    transform: scale(1.02);
-  }
-  
-  &.incorrect {
-    border-color: var(--error-color);
-    background-color: rgba(231, 76, 60, 0.15);
-    box-shadow: 0 0 12px rgba(231, 76, 60, 0.3);
-    animation: shake 0.5s ease-in-out;
-  }
-  
-  &:disabled {
-    opacity: 0.8;
-    cursor: wait;
-  }
-}
-
-// Button styles
-.btn {
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &.primary {
-    background-color: var(--primary-color);
-    color: white;
-    
-    &:hover {
-      background-color: var(--primary-color-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
-    }
-  }
-  
-  &.secondary {
-    background-color: var(--secondary-color);
-    color: white;
-    
-    &:hover {
-      background-color: var(--secondary-color-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-    }
-  }
-  
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
-  
-  &.processing {
-    background-color: #95a5a6;
-    cursor: wait;
-    
-    &:hover {
-      background-color: #95a5a6;
-      transform: none;
-      box-shadow: none;
-    }
-  }
-}
-
-// Game over screen
-.game-over {
-  text-align: center;
-  
-  h2 {
-    color: var(--success-color);
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-  }
-  
-  .final-score {
-    font-size: 1.5rem;
-    margin: 20px 0;
+  .greek-name {
+    font-size: 1.2rem;
+    font-weight: normal;
     color: var(--primary-color);
+    font-style: italic;
+    margin-top: 8px;
   }
-}
-
-// Game failed screen
-.game-failed {
-  text-align: center;
-  
-  h2 {
-    color: var(--error-color);
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-  }
-  
-  .failure-message {
-    font-size: 1.3rem;
-    color: var(--muted-text);
-    margin-bottom: 15px;
-  }
-  
-  .correct-answer {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--success-color);
-    margin: 15px 0 25px 0;
-    padding: 15px;
-    background-color: rgba(39, 174, 96, 0.1);
-    border-radius: 8px;
-    border-left: 4px solid var(--success-color);
-    
-    .greek-name {
-      font-size: 1.2rem;
-      font-weight: normal;
-      color: var(--primary-color);
-      font-style: italic;
-      margin-top: 8px;
-    }
-  }
-  
-  .final-score {
-    font-size: 1.3rem;
-    margin: 15px 0;
-    color: var(--primary-color);
-  }
-}
-
-// Animations
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
-}
-
-.fade-in {
-  animation: fadeIn 0.5s ease-out;
 }
 </style>

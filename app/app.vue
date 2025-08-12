@@ -1,9 +1,8 @@
 <template lang="pug">
-.game-container
-  DarkModeToggle
-  GreekAlphabetGame
+NuxtLayout
+  NuxtPage
 </template>
 
 <script setup lang="ts">
-// This component now serves as a layout wrapper for the app
+// This component serves as the root app component with layout and routing
 </script>
