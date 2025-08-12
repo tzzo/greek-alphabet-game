@@ -18,33 +18,37 @@ GameCard(v-if="gameStarted && !gameComplete")
   .game-info
     p.case-indicator {{ currentLetter.case === 'upper' ? 'Uppercase' : 'Lowercase' }}
   
-  input.game-input(
-    v-model="userAnswer"
-    @keyup.enter="!isProcessingAnswer && checkAnswer()"
-    @input="resetInputState"
-    @focus="handleInputFocus"
-    :class="inputState"
-    :disabled="isProcessingAnswer"
-    placeholder="Enter letter name (Alpha, άλφα, etc.)"
-    ref="answerInput"
+  form(
+    @submit.prevent="!isProcessingAnswer && checkAnswer()"
     autocomplete="off"
-    autocorrect="off"
-    spellcheck="false"
-    inputmode="text"
-    data-form-type="other"
-    data-lpignore="true"
-    data-1p-ignore="true"
-    readonly
-    @touchstart="enableInput"
-    @click="enableInput"
   )
-  
-  .game-buttons
-    button.btn.secondary(
-      @click="checkAnswer" 
-      :disabled="!userAnswer.trim() || isProcessingAnswer"
-      :class="{ processing: isProcessingAnswer }"
-    ) {{ isProcessingAnswer ? (inputState === 'correct' ? 'Next...' : 'Game Over...') : 'Submit' }}
+    input.game-input(
+      v-model="userAnswer"
+      @keyup.enter="!isProcessingAnswer && checkAnswer()"
+      @input="resetInputState"
+      @focus="handleInputFocus"
+      :class="inputState"
+      :disabled="isProcessingAnswer"
+      placeholder="Enter letter name (Alpha, άλφα, etc.)"
+      ref="answerInput"
+      autocomplete="off"
+      autocorrect="off"
+      spellcheck="false"
+      inputmode="text"
+      data-form-type="other"
+      data-lpignore="true"
+      data-1p-ignore="true"
+      readonly
+      @touchstart="enableInput"
+      @click="enableInput"
+    )
+    
+    .game-buttons
+      button.btn.secondary(
+        type="submit"
+        :disabled="!userAnswer.trim() || isProcessingAnswer"
+        :class="{ processing: isProcessingAnswer }"
+      ) {{ isProcessingAnswer ? (inputState === 'correct' ? 'Next...' : 'Game Over...') : 'Submit' }}
 
 GameCard(v-if="gameComplete && completedSuccessfully")
   .game-results
