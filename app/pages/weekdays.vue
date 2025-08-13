@@ -1,9 +1,6 @@
 <template lang="pug">
 div
   .page-header
-    .back-button
-      NuxtLink(to="/") 
-        button.btn.btn-secondary ← Back to Games
     h1 Greek Weekdays Game
   
   .game-content

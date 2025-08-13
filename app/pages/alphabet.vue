@@ -1,9 +1,6 @@
 <template lang="pug">
 div
   .page-header
-    .back-button
-      NuxtLink(to="/") 
-        button.btn.btn-secondary ← Back to Games
     h1 Greek Alphabet Game
   
   .game-content
@@ -28,6 +25,7 @@ useHead({
   margin-bottom: 2rem;
   width: 100%;
   max-width: 800px;
+  text-align: center;
 
   .back-button {
     flex-shrink: 0;

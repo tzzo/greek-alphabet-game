@@ -1,6 +1,7 @@
 <template lang="pug">
 .layout-container
   .layout-header
+    NuxtLink(to="/") Greek Learning Games
     DarkModeToggle
   
   main.layout-main
@@ -20,21 +21,15 @@
 }
 
 .layout-header {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
   z-index: 100;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
 }
 
 .layout-main {
   width: 100%;
   min-height: 100vh;
-}
-
-@media (max-width: 768px) {
-  .layout-header {
-    top: 0.5rem;
-    right: 0.5rem;
-  }
 }
 </style>
