@@ -1,7 +1,6 @@
 <template lang="pug">
 div
-  .page-header
-    h1 Greek Weekdays Game
+  PageHeader(title="Greek Weekdays Game")
   
   .game-content
     GamesWeekdays
@@ -18,31 +17,6 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-.page-header {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 2rem;
-
-  .back-button {
-    flex-shrink: 0;
-  }
-
-  h1 {
-    color: var(--text-color);
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0;
-    text-align: center;
-    flex-grow: 1;
-  }
-}
-
 .game-content {
   width: 100%;
   display: flex;
@@ -80,10 +54,6 @@ useHead({
     gap: 1rem;
     text-align: center;
     padding: 0 1rem;
-
-    .back-button {
-      align-self: flex-start;
-    }
 
     h1 {
       font-size: 1.5rem;

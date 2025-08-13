@@ -21,7 +21,7 @@
     margin: 20px auto;
     background: var(--card-background);
     box-shadow: var(--shadow);
-    border-radius: 12px;
+    border-radius: var(--border-radius);
   }
 }
 
@@ -88,7 +88,7 @@
 :deep(.progress-container) {
   width: 100%;
   background-color: var(--progress-bg);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   overflow: hidden;
   margin: 20px 0;
   
@@ -96,7 +96,7 @@
     height: 10px;
     background-color: var(--success-color);
     transition: width 0.3s ease;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
   }
 }
 
@@ -166,7 +166,7 @@
   padding: 15px;
   font-size: 1.2rem;
   border: 2px solid var(--input-border);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   margin: 20px 0;
   text-align: center;
   transition: all 0.3s ease;
@@ -208,7 +208,7 @@
   border: none;
   padding: 15px 30px;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;

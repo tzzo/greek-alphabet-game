@@ -18,8 +18,8 @@ const toggleColorMode = (): void => {
   border: 2px solid var(--input-border);
   border-radius: 50%;
   display: flex;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   align-items: center;
   justify-content: center;
   cursor: pointer;

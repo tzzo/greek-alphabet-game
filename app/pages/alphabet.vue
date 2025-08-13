@@ -1,7 +1,6 @@
 <template lang="pug">
 div
-  .page-header
-    h1 Greek Alphabet Game
+  PageHeader(title="Greek Alphabet Game")
   
   .game-content
     GamesGreekAlphabet
@@ -18,29 +17,6 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-.page-header {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: 800px;
-  text-align: center;
-
-  .back-button {
-    flex-shrink: 0;
-  }
-
-  h1 {
-    color: var(--text-color);
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0;
-    text-align: center;
-    flex-grow: 1;
-  }
-}
-
 .game-content {
   width: 100%;
   display: flex;
@@ -77,10 +53,6 @@ useHead({
     flex-direction: column;
     gap: 1rem;
     text-align: center;
-
-    .back-button {
-      align-self: flex-start;
-    }
 
     h1 {
       font-size: 1.5rem;

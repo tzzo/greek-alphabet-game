@@ -1,8 +1,10 @@
 <template lang="pug">
 .games-container
-  .header
-    h1 Greek Learning Games
-    p Choose a game to start learning Greek
+  PageHeader(
+    title="Greek Learning Games"
+    subtitle="Choose a game to start learning Greek"
+    :is-home="true"
+  )
   
   .games-grid
     .game-card(v-for="game in games" :key="game.id")
@@ -79,29 +81,6 @@ const games = [
   transition: background-color 0.3s ease;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
-  max-width: 600px;
-
-  h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  p {
-    font-size: 1.2rem;
-    color: var(--secondary-color);
-    margin-bottom: 0;
-  }
-}
-
 .games-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -111,7 +90,7 @@ const games = [
 }
 
 .game-card {
-  background-color: var(--bg-color);
+  background-color: var(--card-background);
   border: 2px solid var(--border-color);
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -221,18 +200,6 @@ const games = [
 @media (max-width: 768px) {
   .games-container {
     padding: 1rem;
-  }
-
-  .header {
-    margin-bottom: 2rem;
-
-    h1 {
-      font-size: 2rem;
-    }
-
-    p {
-      font-size: 1rem;
-    }
   }
 
   .games-grid {

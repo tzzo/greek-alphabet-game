@@ -390,7 +390,7 @@ const enableInput = (): void => {
   margin: 15px 0 25px 0;
   padding: 15px;
   background-color: rgba(39, 174, 96, 0.1);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   border-left: 4px solid var(--success-color);
   
   .greek-name {
