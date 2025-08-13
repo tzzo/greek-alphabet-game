@@ -44,11 +44,16 @@ GameCard(v-if="gameStarted && !gameComplete")
     )
     
     .game-buttons
-      button.btn.secondary(
+      GameButton(
         type="submit"
+        label="Submit"
+        variant="secondary"
+        :state="getButtonState()"
         :disabled="!userAnswer.trim() || isProcessingAnswer"
-        :class="{ processing: isProcessingAnswer }"
-      ) {{ isProcessingAnswer ? (inputState === 'correct' ? 'Next...' : 'Game Over...') : 'Submit' }}
+        :processing="isProcessingAnswer"
+        :processing-label="inputState === 'correct' ? 'Next...' : 'Game Over...'"
+        @click="checkAnswer"
+      )
 
 GameCard(v-if="gameComplete && completedSuccessfully")
   .game-results
@@ -59,7 +64,11 @@ GameCard(v-if="gameComplete && completedSuccessfully")
       div Final streak: 
         span.stat-value {{ currentScore }}
       div(v-if="isNewHighScore") New High Score! 🏆
-    button.btn.primary(@click="restartGame") Play Again
+    GameButton(
+      label="Play Again"
+      variant="primary"
+      @click="restartGame"
+    )
   
 GameCard(v-if="gameComplete && !completedSuccessfully")
   .game-results
@@ -74,7 +83,11 @@ GameCard(v-if="gameComplete && !completedSuccessfully")
         span.stat-value {{ currentScore }}
       div(v-if="isNewHighScore") New High Score! 🏆
       div(v-else-if="currentScore > 0") {{ currentScore === 1 ? 'Not bad for your first try!' : `You got ${currentScore} letters right!` }}
-    button.btn.primary(@click="restartGame") Try Again
+    GameButton(
+      label="Try Again"
+      variant="primary"
+      @click="restartGame"
+    )
 </template>
 
 <script setup lang="ts">
@@ -218,6 +231,12 @@ const startGame = (): void => {
       answerInput.value.focus()
     }
   })
+}
+
+const getButtonState = () => {
+  if (inputState.value === 'correct') return 'success'
+  if (inputState.value === 'incorrect') return 'failure'
+  return 'default'
 }
 
 const checkAnswer = (): void => {

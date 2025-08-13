@@ -15,13 +15,15 @@ GameCard
     .english-translation {{ currentWord.english }}
   
   .game-buttons
-    button.btn(
+    GameButton(
       v-for="g in genders"
       :key="g.value"
-      :class="{ selected: selectedGender === g.value, correct: showResult && g.value === currentWord.gender, incorrect: showResult && selectedGender === g.value && selectedGender !== currentWord.gender }"
+      :label="g.label"
+      variant="option"
+      :state="getButtonState(g.value)"
       :disabled="showResult"
       @click="guessGender(g.value)"
-    ) {{ g.label }}
+    )
 </template>
 
 <script setup lang="ts">
@@ -91,6 +93,17 @@ function loadHighScore() {
   }
 }
 
+function getButtonState(genderValue: string) {
+  if (showResult.value) {
+    if (genderValue === currentWord.value.gender) {
+      return 'correct'
+    } else if (selectedGender.value === genderValue && selectedGender.value !== currentWord.value.gender) {
+      return 'incorrect'
+    }
+  }
+  return selectedGender.value === genderValue ? 'selected' : 'default'
+}
+
 function guessGender(gender: string) {
   if (showResult.value) return
   selectedGender.value = gender
@@ -139,29 +152,6 @@ onMounted(() => {
   font-style: italic;
   display: block;
   text-align: center;
-}
-
-.btn.selected {
-  outline: 2px solid var(--secondary-color);
-  outline-offset: -2px; /* Inset outline to prevent layout shift */
-}
-.btn.correct {
-  background-color: var(--success-color) !important;
-  color: white;
-  outline: 2px solid var(--success-color);
-  outline-offset: -2px;
-}
-.btn.incorrect {
-  background-color: var(--danger-color) !important;
-  color: white;
-  outline: 2px solid var(--danger-color);
-  outline-offset: -2px;
-}
-
-@media (max-width: 500px) {
-  .btn {
-    padding: 15px;
-  }
 }
 
 .greek-content {

@@ -15,12 +15,15 @@ GameCard(v-if="gameState === 'playing'")
     .instruction Select the correct English weekday:
       
   .weekday-options
-    button.option-button(
+    GameButton(
       v-for="option in shuffledOptions" 
       :key="option"
+      :label="option"
+      variant="option"
+      :state="getButtonState(option)"
+      :disabled="showResult"
       @click="selectAnswer(option)"
-      :class="{ 'selected': selectedAnswer === option }"
-    ) {{ option }}
+    )
 
 GameCard(v-if="gameState === 'won'")
   .game-results
@@ -31,7 +34,11 @@ GameCard(v-if="gameState === 'won'")
       div Perfect Score: 
         span.stat-value 7/7
     .game-buttons
-      button.btn.primary(@click="resetGame") Play Again
+      GameButton(
+        label="Play Again"
+        variant="primary"
+        @click="resetGame"
+      )
       NuxtLink(to="/" class="btn secondary") Back to Games
 
 GameCard(v-if="gameState === 'lost'")
@@ -44,7 +51,11 @@ GameCard(v-if="gameState === 'lost'")
         span  out of 7 weekdays correct
       div.encouragement Keep practicing to improve!
     .game-buttons
-      button.btn.primary(@click="resetGame") Try Again
+      GameButton(
+        label="Try Again"
+        variant="primary"
+        @click="resetGame"
+      )
       NuxtLink(to="/" class="btn secondary") Back to Games
 </template>
 
@@ -70,6 +81,7 @@ const gameState = ref<'playing' | 'won' | 'lost'>('playing')
 const correctAnswers = ref(0)
 const currentWeekdayIndex = ref(0)
 const selectedAnswer = ref('')
+const showResult = ref(false)
 const usedWeekdays = ref<number[]>([])
 
 // Computed properties
@@ -96,8 +108,29 @@ const shuffledOptions = computed(() => {
 })
 
 // Methods
+function getButtonState(option: string) {
+  if (!showResult.value) {
+    return selectedAnswer.value === option ? 'selected' : 'default'
+  }
+  
+  // Show results
+  const current = currentWeekday.value
+  if (!current) return 'default'
+  
+  if (option === current.english) {
+    return 'correct'
+  } else if (selectedAnswer.value === option && selectedAnswer.value !== current.english) {
+    return 'incorrect'
+  }
+  
+  return 'default'
+}
+
 function selectAnswer(answer: string) {
+  if (showResult.value) return
+  
   selectedAnswer.value = answer
+  showResult.value = true
   
   setTimeout(() => {
     const current = currentWeekday.value
@@ -115,12 +148,14 @@ function selectAnswer(answer: string) {
     } else {
       gameState.value = 'lost'
     }
-    
-    selectedAnswer.value = ''
-  }, 500)
+  }, 1500) // Increased timeout to show result longer
 }
 
 function nextWeekday() {
+  // Reset states
+  selectedAnswer.value = ''
+  showResult.value = false
+  
   const availableIndices = weekdays
     .map((_, index) => index)
     .filter(index => !usedWeekdays.value.includes(index))
@@ -138,6 +173,7 @@ function resetGame() {
   gameState.value = 'playing'
   correctAnswers.value = 0
   selectedAnswer.value = ''
+  showResult.value = false
   usedWeekdays.value = []
   // Start with a random weekday instead of always index 0
   currentWeekdayIndex.value = Math.floor(Math.random() * weekdays.length)
@@ -158,35 +194,6 @@ onMounted(() => {
   gap: 1rem;
   max-width: 400px;
   margin: 0 auto;
-}
-
-.option-button {
-  padding: 1rem 1.5rem;
-  border: 2px solid var(--secondary-color);
-  border-radius: 12px;
-  background-color: var(--secondary-color);
-  color: white;
-  font-family: inherit;
-  font-size: 1.1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
-
-  &:hover:not(.selected) {
-    background-color: var(--secondary-color-hover);
-    border-color: var(--secondary-color-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
-  }
-
-  &.selected {
-    border-color: var(--primary-color);
-    background-color: var(--primary-color);
-    color: white;
-    transform: scale(1.02);
-    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.4);
-  }
 }
 
 .encouragement {
