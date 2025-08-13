@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  GuessGenderGame
+  GamesGuessGender
 </template>
 
 <script setup lang="ts">

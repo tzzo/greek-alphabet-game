@@ -4,7 +4,7 @@ div
     h1 Greek Weekdays Game
   
   .game-content
-    WeekdaysGame
+    GamesWeekdays
 </template>
 
 <script setup lang="ts">

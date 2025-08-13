@@ -4,7 +4,7 @@ div
     h1 Greek Alphabet Game
   
   .game-content
-    GreekAlphabetGame
+    GamesGreekAlphabet
 </template>
 
 <script setup lang="ts">
