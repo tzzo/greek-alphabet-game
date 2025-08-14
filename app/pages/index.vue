@@ -56,6 +56,15 @@ const games = [
     route: '/gender',
     difficulty: 'intermediate',
     duration: '10-15 min'
+  },
+  {
+    id: 'translate',
+    title: 'Greek Translation',
+    description: 'Translate English words to Greek and build your vocabulary',
+    icon: '🔤',
+    route: '/translate',
+    difficulty: 'intermediate',
+    duration: '15-20 min'
   }
   // Future games will be added here:
   // {

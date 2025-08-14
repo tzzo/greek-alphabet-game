@@ -6,17 +6,23 @@
 :root {
   // Light mode (default)
   --primary-color: #2c3e50;
+  --primary-color-rgb: 44, 62, 80;
   --primary-color-dark: #1a252f;
   --primary-color-hover: #1e2a36;
   --secondary-color: #3498db;
   --secondary-color-hover: #2980b9;
   --success-color: #27ae60;
+  --success-color-rgb: 39, 174, 96;
   --error-color: #e74c3c;
+  --danger-color: #e74c3c;
+  --danger-color-rgb: 231, 76, 60;
   --background-color: #ecf0f1;
+  --bg-color: #ecf0f1;
   --text-color: #2c3e50;
   --card-background: #ffffff;
   --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   --input-border: #ddd;
+  --border-color: #ddd;
   --muted-text: #666;
   --progress-bg: #e0e0e0;
   --border-radius: 12px;
@@ -25,17 +31,23 @@
 // Dark mode - using the standard class from @nuxtjs/color-mode
 .dark {
   --primary-color: #4a90e2;
+  --primary-color-rgb: 74, 144, 226;
   --primary-color-dark: #357abd;
   --primary-color-hover: #3d7bc4;
   --secondary-color: #5dade2;
   --secondary-color-hover: #4a9dd6;
   --success-color: #58d68d;
+  --success-color-rgb: 88, 214, 141;
   --error-color: #ec7063;
+  --danger-color: #ec7063;
+  --danger-color-rgb: 236, 112, 99;
   --background-color: #1a1a1a;
+  --bg-color: #1a1a1a;
   --text-color: #e8e8e8;
   --card-background: #2d2d30;
   --shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   --input-border: #4a4a4a;
+  --border-color: #4a4a4a;
   --muted-text: #b0b0b0;
   --progress-bg: #404040;
 }
